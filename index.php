@@ -9,7 +9,7 @@ foreach($url as $key => $part){
         unset($url[$key]);
     }
 }
-$get = isset($get)?true:false;
+$get = isset($_GET) && !empty($_GET) ? true : false;
 $url = implode('/',$url).($get?"?".http_build_query($_GET):"");
 header("HTTP/1.1 301 Moved Permanently"); 
 header('Location:'.$destination.$url);
